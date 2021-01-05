@@ -1,6 +1,7 @@
 # flutter_pokedex_mobx
 
 A new Flutter application.
+Pokemon api: https://pokeapi.co/
 
 ## Getting Started
 
