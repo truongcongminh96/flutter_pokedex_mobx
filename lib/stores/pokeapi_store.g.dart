@@ -16,6 +16,13 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
       (_$pokeAPIComputed ??= Computed<PokeAPI>(() => super.pokeAPI,
               name: '_PokeApiStoreBase.pokeAPI'))
           .value;
+  Computed<Pokemon> _$pokemonActualComputed;
+
+  @override
+  Pokemon get pokemonActual =>
+      (_$pokemonActualComputed ??= Computed<Pokemon>(() => super.pokemonActual,
+              name: '_PokeApiStoreBase.pokemonActual'))
+          .value;
 
   final _$_pokeAPIAtom = Atom(name: '_PokeApiStoreBase._pokeAPI');
 
@@ -29,6 +36,21 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   set _pokeAPI(PokeAPI value) {
     _$_pokeAPIAtom.reportWrite(value, super._pokeAPI, () {
       super._pokeAPI = value;
+    });
+  }
+
+  final _$_pokemonActualAtom = Atom(name: '_PokeApiStoreBase._pokemonActual');
+
+  @override
+  Pokemon get _pokemonActual {
+    _$_pokemonActualAtom.reportRead();
+    return super._pokemonActual;
+  }
+
+  @override
+  set _pokemonActual(Pokemon value) {
+    _$_pokemonActualAtom.reportWrite(value, super._pokemonActual, () {
+      super._pokemonActual = value;
     });
   }
 
@@ -58,11 +80,11 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   }
 
   @override
-  Widget getImage({String numero}) {
+  dynamic setPokemonActual({int index}) {
     final _$actionInfo = _$_PokeApiStoreBaseActionController.startAction(
-        name: '_PokeApiStoreBase.getImage');
+        name: '_PokeApiStoreBase.setPokemonActual');
     try {
-      return super.getImage(numero: numero);
+      return super.setPokemonActual(index: index);
     } finally {
       _$_PokeApiStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -71,7 +93,8 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   @override
   String toString() {
     return '''
-pokeAPI: ${pokeAPI}
+pokeAPI: ${pokeAPI},
+pokemonActual: ${pokemonActual}
     ''';
   }
 }

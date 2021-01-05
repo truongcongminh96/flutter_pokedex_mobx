@@ -24,13 +24,33 @@ class PokeItem extends StatelessWidget {
             child: Stack(
               //alignment: Alignment.bottomRight,
               children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                      child: Text(
+                        name,
+                        style: TextStyle(
+                            fontFamily: 'Google',
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: setTypes(),
+                    ),
+                  ],
+                ),
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Opacity(
                     child: Image.asset(
                       ConstsApp.whitePokeball,
-                      height: 90.0,
-                      width: 90.0,
+                      height: 80.0,
+                      width: 80.0,
                     ),
                     opacity: 0.2,
                   ),
@@ -38,8 +58,8 @@ class PokeItem extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: CachedNetworkImage(
-                    height: 90.0,
-                    width: 90.0,
+                    height: 80.0,
+                    width: 80.0,
                     placeholder: (context, url) => new Container(
                       color: Colors.transparent,
                     ),
@@ -47,21 +67,6 @@ class PokeItem extends StatelessWidget {
                         'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png',
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    name,
-                    style: TextStyle(
-                        fontFamily: 'Google',
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0, top: 35.0),
-                  child: setTypes(),
-                )
               ],
             ),
           ),
