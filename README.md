@@ -31,6 +31,10 @@ When the observables change, all reactions are re-run. What's interesting is tha
 
 ![plot](mobx-triad-1024e4f4e0ff0ce3e27a2da8e36ab3a4.png)
 
+## GetIt
+This is a simple Service Locator for Dart and Flutter projects with some additional goodies highly inspired by Splat. It can be used instead of InheritedWidget or Provider to access objects e.g. from your UI.
+
+[online documentation](https://github.com/fluttercommunity/get_it)
 
 ## APP UI
 ![plot](pokedex2.png)
