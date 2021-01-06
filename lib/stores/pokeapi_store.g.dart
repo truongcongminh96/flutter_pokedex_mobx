@@ -69,6 +69,21 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
     });
   }
 
+  final _$positionAcutalAtom = Atom(name: '_PokeApiStoreBase.positionAcutal');
+
+  @override
+  int get positionAcutal {
+    _$positionAcutalAtom.reportRead();
+    return super.positionAcutal;
+  }
+
+  @override
+  set positionAcutal(int value) {
+    _$positionAcutalAtom.reportWrite(value, super.positionAcutal, () {
+      super.positionAcutal = value;
+    });
+  }
+
   final _$_PokeApiStoreBaseActionController =
       ActionController(name: '_PokeApiStoreBase');
 
@@ -98,6 +113,7 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   String toString() {
     return '''
 colorPokemon: ${colorPokemon},
+positionAcutal: ${positionAcutal},
 pokeAPI: ${pokeAPI},
 pokemonActual: ${pokemonActual}
     ''';
