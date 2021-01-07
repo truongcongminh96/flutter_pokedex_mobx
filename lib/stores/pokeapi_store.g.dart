@@ -110,6 +110,17 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   }
 
   @override
+  Widget getImage({String numberPokemon}) {
+    final _$actionInfo = _$_PokeApiStoreBaseActionController.startAction(
+        name: '_PokeApiStoreBase.getImage');
+    try {
+      return super.getImage(numberPokemon: numberPokemon);
+    } finally {
+      _$_PokeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 colorPokemon: ${colorPokemon},

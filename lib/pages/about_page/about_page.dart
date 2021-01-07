@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_pokedex_mobx/pages/about_page/widgets/about_base_stats.dart';
+import 'package:flutter_pokedex_mobx/pages/about_page/widgets/about_evolution.dart';
 import 'package:get_it/get_it.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 import 'package:mobx/mobx.dart';
@@ -26,8 +28,8 @@ class _AboutPageState extends State<AboutPage>
     _pageController = PageController(initialPage: 0);
 
     _disposer = reaction(
-          (f) => _pokemonStore.pokemonActual,
-          (r) => _pageController.animateToPage(0,
+      (f) => _pokemonStore.pokemonActual,
+      (r) => _pageController.animateToPage(0,
           duration: Duration(milliseconds: 300), curve: Curves.easeInOut),
     );
   }
@@ -56,25 +58,29 @@ class _AboutPageState extends State<AboutPage>
               },
               controller: _tabController,
               labelStyle: TextStyle(
-                //up to your taste
+                  //up to your taste
                   fontWeight: FontWeight.w700),
-              indicatorSize: TabBarIndicatorSize.label, //makes it better
-              labelColor: _pokemonStore.colorPokemon, //Google's sweet blue
-              unselectedLabelColor: Color(0xff5f6368), //niceish grey
-              isScrollable: true, //up to your taste
+              indicatorSize: TabBarIndicatorSize.label,
+              //makes it better
+              labelColor: _pokemonStore.colorPokemon,
+              //Google's sweet blue
+              unselectedLabelColor: Color(0xff5f6368),
+              //niceish grey
+              isScrollable: true,
+              //up to your taste
               indicator: MD2Indicator(
-                //it begins here
+                  //it begins here
                   indicatorHeight: 4,
                   indicatorColor: _pokemonStore.colorPokemon,
                   indicatorSize: MD2IndicatorSize
                       .normal //3 different modes tiny-normal-full
-              ),
+                  ),
               tabs: <Widget>[
                 Tab(
-                  text: "Description",
+                  text: "Base stats ",
                 ),
                 Tab(
-                  text: "Base stats",
+                  text: "Description",
                 ),
                 Tab(
                   text: "Evolution",
@@ -94,19 +100,10 @@ class _AboutPageState extends State<AboutPage>
         },
         controller: _pageController,
         children: <Widget>[
+          AboutBaseStats(),
           AboutDescription(),
-          Container(
-            width: 10.0,
-            height: 10.0,
-          ),
-          Container(
-            width: 10.0,
-            height: 10.0,
-          ),
-          Container(
-            width: 10.0,
-            height: 10.0,
-          )
+          AboutEvolution(),
+          Container()
         ],
       ),
     );
