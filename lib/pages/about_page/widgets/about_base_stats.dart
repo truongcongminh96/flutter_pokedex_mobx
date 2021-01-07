@@ -45,178 +45,205 @@ class AboutBaseStats extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         child: Observer(builder: (context) {
           return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'velocity',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Sp. Def',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Sp. Atq',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Defend',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Attack',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'HP',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Total',
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Observer(builder: (context) {
-                  List<int> _list = getStatusPokemon(_pokeApiV2Store.pokeApiV2);
-                  return Column(
+              scrollDirection: Axis.horizontal,
+              child: Column(
+                children: [
+                  Row(
                     children: <Widget>[
-                      Text(
-                        _list[0].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'velocity',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Sp. Def',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Sp. Atq',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Defend',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Attack',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'HP',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Total',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey[600]),
+                          ),
+                        ],
                       ),
                       SizedBox(
-                        height: 10,
+                        width: 10,
                       ),
-                      Text(
-                        _list[1].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
+                      Observer(builder: (context) {
+                        List<int> _list =
+                            getStatusPokemon(_pokeApiV2Store.pokeApiV2);
+                        return Column(
+                          children: <Widget>[
+                            Text(
+                              _list[0].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              _list[1].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              _list[2].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              _list[3].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              _list[4].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              _list[5].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              _list[6].toString(),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        );
+                      }),
                       SizedBox(
-                        height: 10,
+                        width: 10,
                       ),
-                      Text(
-                        _list[2].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        _list[3].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        _list[4].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        _list[5].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        _list[6].toString(),
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      Observer(builder: (context) {
+                        List<int> _list =
+                            getStatusPokemon(_pokeApiV2Store.pokeApiV2);
+                        return Column(
+                          children: <Widget>[
+                            StatusBar(
+                              widthFactor: _list[0] / 160,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            StatusBar(
+                              widthFactor: _list[1] / 160,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            StatusBar(
+                              widthFactor: _list[2] / 160,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            StatusBar(
+                              widthFactor: _list[3] / 160,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            StatusBar(
+                              widthFactor: _list[4] / 160,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            StatusBar(
+                              widthFactor: _list[5] / 160,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            StatusBar(
+                              widthFactor: _list[6] / 600,
+                            ),
+                          ],
+                        );
+                      }),
                     ],
-                  );
-                }),
-                SizedBox(
-                  width: 10,
-                ),
-                Observer(builder: (context) {
-                  List<int> _list = getStatusPokemon(_pokeApiV2Store.pokeApiV2);
-                  return Column(
-                    children: <Widget>[
-                      StatusBar(
-                        widthFactor: _list[0] / 160,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      StatusBar(
-                        widthFactor: _list[1] / 160,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      StatusBar(
-                        widthFactor: _list[2] / 160,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      StatusBar(
-                        widthFactor: _list[3] / 160,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      StatusBar(
-                        widthFactor: _list[4] / 160,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      StatusBar(
-                        widthFactor: _list[5] / 160,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      StatusBar(
-                        widthFactor: _list[6] / 600,
-                      ),
-                    ],
-                  );
-                }),
-              ],
-            ),
-          );
+                  ),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Types defenses',
+                            style: TextStyle(
+                                fontSize: 20.0, fontWeight: FontWeight.bold)),
+                        Observer(builder: (context) {
+                          return Text(
+                            _pokeApiV2Store.species.evolutionChain.url,
+                          );
+                        })
+                      ],
+                    ),
+                  )
+                ],
+              ));
         }),
       ),
     );

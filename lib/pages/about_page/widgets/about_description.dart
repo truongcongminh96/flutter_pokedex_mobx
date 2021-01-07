@@ -110,10 +110,105 @@ class AboutDescription extends StatelessWidget {
                   ],
                 );
               }),
-            )
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Breeding',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: Observer(builder: (context) {
+                return Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Gender',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        Text(
+                          _pokeApiStore.pokemonActual.candy,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Egg Cycle',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                          ),
+                        ),
+                        setTypes(_pokeApiStore.pokemonActual.type),
+                      ],
+                    )
+                  ],
+                );
+              }),
+            ),
           ],
         ),
       ),
     );
   }
+  Widget setTypes(List<String> types) {
+    List<Widget> listPokeTypes = [];
+    types.forEach((name) {
+      listPokeTypes.add(
+        Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(80, 255, 255, 255)),
+              child: Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: Text(
+                  name.trim(),
+                  style: TextStyle(
+                      fontFamily: 'Google',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 8,
+            )
+          ],
+        ),
+      );
+    });
+    return Row(
+      children: listPokeTypes,
+      crossAxisAlignment: CrossAxisAlignment.start,
+    );
+  }
+
 }

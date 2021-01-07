@@ -77,10 +77,10 @@ class _AboutPageState extends State<AboutPage>
                   ),
               tabs: <Widget>[
                 Tab(
-                  text: "Base stats ",
+                  text: "Description",
                 ),
                 Tab(
-                  text: "Description",
+                  text: "Base stats",
                 ),
                 Tab(
                   text: "Evolution",
@@ -100,8 +100,9 @@ class _AboutPageState extends State<AboutPage>
         },
         controller: _pageController,
         children: <Widget>[
-          AboutBaseStats(),
           AboutDescription(),
+          AboutBaseStats(),
+
           AboutEvolution(),
           Container()
         ],
