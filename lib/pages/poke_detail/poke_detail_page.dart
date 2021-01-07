@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_pokedex_mobx/pages/about_page/about_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_pokedex_mobx/consts/consts_app.dart';
 import 'package:flutter_pokedex_mobx/models/pokeapi.dart';
@@ -182,6 +183,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
               return Container(
                 height: MediaQuery.of(context).size.height -
                     MediaQuery.of(context).size.height * 0.15,
+                child: AboutPage(),
               );
             },
           ),
