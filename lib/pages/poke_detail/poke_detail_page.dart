@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_pokedex_mobx/pages/about_page/about_page.dart';
+import 'package:flutter_pokedex_mobx/stores/pokeapiv2_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_pokedex_mobx/consts/consts_app.dart';
 import 'package:flutter_pokedex_mobx/models/pokeapi.dart';
@@ -20,6 +21,7 @@ class PokeDetailPage extends StatefulWidget {
 class _PokeDetailPageState extends State<PokeDetailPage> {
   PageController _pageController;
   PokeApiStore _pokemonStore;
+  PokeApiV2Store _pokeApiV2Store;
   MultiTrackTween _animation;
   double _progress;
   double _multiple;
@@ -32,6 +34,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
     _pageController =
         PageController(initialPage: widget.index, viewportFraction: 0.5);
     _pokemonStore = GetIt.instance<PokeApiStore>();
+    _pokeApiV2Store = GetIt.instance<PokeApiV2Store>();
     _animation = MultiTrackTween([
       Track("rotation").add(Duration(seconds: 5), Tween(begin: 0.0, end: 6.0),
           curve: Curves.linear)
@@ -197,6 +200,8 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                   controller: _pageController,
                   onPageChanged: (index) {
                     _pokemonStore.setPokemonActual(index: index);
+                    _pokeApiV2Store.getInfoPokemon(_pokemonStore.pokemonActual.name);
+                    _pokeApiV2Store.getInfoSpecies(_pokemonStore.pokemonActual.id.toString());
                   },
                   itemCount: _pokemonStore.pokeAPI.pokemon.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -217,7 +222,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                     height: 270,
                                     width: 270,
                                   ),
-                                  opacity: index == _pokemonStore.positionAcutal
+                                  opacity: index == _pokemonStore.positionActual
                                       ? 0.2
                                       : 0,
                                   duration: Duration(milliseconds: 200),
@@ -236,7 +241,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                     AnimatedPadding(
                                       child: Hero(
                                         tag: index ==
-                                                _pokemonStore.positionAcutal
+                                                _pokemonStore.positionActual
                                             ? _pokemonItem.name
                                             : 'none' + index.toString(),
                                         child: CachedNetworkImage(
@@ -247,7 +252,7 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                             color: Colors.transparent,
                                           ),
                                           color: index ==
-                                                  _pokemonStore.positionAcutal
+                                                  _pokemonStore.positionActual
                                               ? null
                                               : Colors.black.withOpacity(0.5),
                                           imageUrl:
@@ -258,11 +263,11 @@ class _PokeDetailPageState extends State<PokeDetailPage> {
                                       curve: Curves.easeIn,
                                       padding: EdgeInsets.only(
                                           top: index ==
-                                                  _pokemonStore.positionAcutal
+                                                  _pokemonStore.positionActual
                                               ? 0
                                               : 60,
                                           bottom: index ==
-                                                  _pokemonStore.positionAcutal
+                                                  _pokemonStore.positionActual
                                               ? 0
                                               : 60),
                                     ),
