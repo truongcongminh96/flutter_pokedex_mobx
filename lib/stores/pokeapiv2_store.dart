@@ -33,7 +33,8 @@ abstract class _PokeApiV2StoreBase with Store {
     try{
       final response = await http.get(ConstsAPI.pokeapiv2EspeciesURL+idPokemon);
       var decodeJson = jsonDecode(response.body);
-      species = Species.fromJson(decodeJson);
+      var _species = Species.fromJson(decodeJson);
+      species = _species;
     }catch (error, stacktrace) {
       print('error!!!!!!!!!' + stacktrace.toString());
       return null;

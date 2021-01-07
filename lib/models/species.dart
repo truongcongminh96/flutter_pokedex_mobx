@@ -1,29 +1,26 @@
 class Species {
   int baseHappiness;
   int captureRate;
-  ObjectPokemon color;
+  ObjPokemon color;
   EvolutionChain evolutionChain;
-  Null evolvesFromSpecies;
+  ObjPokemon evolvesFromSpecies;
   List<FlavorTextEntries> flavorTextEntries;
-  List<Null> formDescriptions;
   bool formsSwitchable;
   int genderRate;
   List<Genera> genera;
-  ObjectPokemon generation;
-  ObjectPokemon growthRate;
-  ObjectPokemon habitat;
+  ObjPokemon generation;
+  ObjPokemon growthRate;
+  ObjPokemon habitat;
   bool hasGenderDifferences;
   int hatchCounter;
   int id;
   bool isBaby;
-  bool isLegendary;
-  bool isMythical;
   String name;
   List<Names> names;
   int order;
   List<PalParkEncounters> palParkEncounters;
   List<PokedexNumbers> pokedexNumbers;
-  ObjectPokemon shape;
+  ObjPokemon shape;
   List<Varieties> varieties;
 
   Species(
@@ -33,7 +30,6 @@ class Species {
         this.evolutionChain,
         this.evolvesFromSpecies,
         this.flavorTextEntries,
-        this.formDescriptions,
         this.formsSwitchable,
         this.genderRate,
         this.genera,
@@ -44,8 +40,6 @@ class Species {
         this.hatchCounter,
         this.id,
         this.isBaby,
-        this.isLegendary,
-        this.isMythical,
         this.name,
         this.names,
         this.order,
@@ -57,11 +51,11 @@ class Species {
   Species.fromJson(Map<String, dynamic> json) {
     baseHappiness = json['base_happiness'];
     captureRate = json['capture_rate'];
-    color = json['color'] != null ? new ObjectPokemon.fromJson(json['color']) : null;
+    color = json['color'] != null ? new ObjPokemon.fromJson(json['color']) : null;
     evolutionChain = json['evolution_chain'] != null
         ? new EvolutionChain.fromJson(json['evolution_chain'])
         : null;
-    evolvesFromSpecies = json['evolves_from_species'];
+    evolvesFromSpecies = json['evolves_from_species'] != null ? new ObjPokemon.fromJson(json['evolves_from_species']) : null;
     if (json['flavor_text_entries'] != null) {
       flavorTextEntries = new List<FlavorTextEntries>();
       json['flavor_text_entries'].forEach((v) {
@@ -77,17 +71,15 @@ class Species {
       });
     }
     generation = json['generation'] != null
-        ? new ObjectPokemon.fromJson(json['generation'])
+        ? new ObjPokemon.fromJson(json['generation'])
         : null;
     growthRate = json['growth_rate'] != null
-        ? new ObjectPokemon.fromJson(json['growth_rate'])
+        ? new ObjPokemon.fromJson(json['growth_rate'])
         : null;
     hasGenderDifferences = json['has_gender_differences'];
     hatchCounter = json['hatch_counter'];
     id = json['id'];
     isBaby = json['is_baby'];
-    isLegendary = json['is_legendary'];
-    isMythical = json['is_mythical'];
     name = json['name'];
     if (json['names'] != null) {
       names = new List<Names>();
@@ -108,7 +100,7 @@ class Species {
         pokedexNumbers.add(new PokedexNumbers.fromJson(v));
       });
     }
-    shape = json['shape'] != null ? new ObjectPokemon.fromJson(json['shape']) : null;
+    shape = json['shape'] != null ? new ObjPokemon.fromJson(json['shape']) : null;
     if (json['varieties'] != null) {
       varieties = new List<Varieties>();
       json['varieties'].forEach((v) {
@@ -150,8 +142,6 @@ class Species {
     data['hatch_counter'] = this.hatchCounter;
     data['id'] = this.id;
     data['is_baby'] = this.isBaby;
-    data['is_legendary'] = this.isLegendary;
-    data['is_mythical'] = this.isMythical;
     data['name'] = this.name;
     if (this.names != null) {
       data['names'] = this.names.map((v) => v.toJson()).toList();
@@ -175,13 +165,13 @@ class Species {
   }
 }
 
-class ObjectPokemon {
+class ObjPokemon {
   String name;
   String url;
 
-  ObjectPokemon({this.name, this.url});
+  ObjPokemon({this.name, this.url});
 
-  ObjectPokemon.fromJson(Map<String, dynamic> json) {
+  ObjPokemon.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
   }
@@ -212,17 +202,17 @@ class EvolutionChain {
 
 class FlavorTextEntries {
   String flavorText;
-  ObjectPokemon language;
-  ObjectPokemon version;
+  ObjPokemon language;
+  ObjPokemon version;
 
   FlavorTextEntries({this.flavorText, this.language, this.version});
 
   FlavorTextEntries.fromJson(Map<String, dynamic> json) {
     flavorText = json['flavor_text'];
     language =
-    json['language'] != null ? new ObjectPokemon.fromJson(json['language']) : null;
+    json['language'] != null ? new ObjPokemon.fromJson(json['language']) : null;
     version =
-    json['version'] != null ? new ObjectPokemon.fromJson(json['version']) : null;
+    json['version'] != null ? new ObjPokemon.fromJson(json['version']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -240,14 +230,14 @@ class FlavorTextEntries {
 
 class Genera {
   String genus;
-  ObjectPokemon language;
+  ObjPokemon language;
 
   Genera({this.genus, this.language});
 
   Genera.fromJson(Map<String, dynamic> json) {
     genus = json['genus'];
     language =
-    json['language'] != null ? new ObjectPokemon.fromJson(json['language']) : null;
+    json['language'] != null ? new ObjPokemon.fromJson(json['language']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -261,14 +251,14 @@ class Genera {
 }
 
 class Names {
-  ObjectPokemon language;
+  ObjPokemon language;
   String name;
 
   Names({this.language, this.name});
 
   Names.fromJson(Map<String, dynamic> json) {
     language =
-    json['language'] != null ? new ObjectPokemon.fromJson(json['language']) : null;
+    json['language'] != null ? new ObjPokemon.fromJson(json['language']) : null;
     name = json['name'];
   }
 
@@ -283,14 +273,14 @@ class Names {
 }
 
 class PalParkEncounters {
-  ObjectPokemon area;
+  ObjPokemon area;
   int baseScore;
   int rate;
 
   PalParkEncounters({this.area, this.baseScore, this.rate});
 
   PalParkEncounters.fromJson(Map<String, dynamic> json) {
-    area = json['area'] != null ? new ObjectPokemon.fromJson(json['area']) : null;
+    area = json['area'] != null ? new ObjPokemon.fromJson(json['area']) : null;
     baseScore = json['base_score'];
     rate = json['rate'];
   }
@@ -308,14 +298,14 @@ class PalParkEncounters {
 
 class PokedexNumbers {
   int entryNumber;
-  ObjectPokemon pokedex;
+  ObjPokemon pokedex;
 
   PokedexNumbers({this.entryNumber, this.pokedex});
 
   PokedexNumbers.fromJson(Map<String, dynamic> json) {
     entryNumber = json['entry_number'];
     pokedex =
-    json['pokedex'] != null ? new ObjectPokemon.fromJson(json['pokedex']) : null;
+    json['pokedex'] != null ? new ObjPokemon.fromJson(json['pokedex']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -330,14 +320,14 @@ class PokedexNumbers {
 
 class Varieties {
   bool isDefault;
-  ObjectPokemon pokemon;
+  ObjPokemon pokemon;
 
   Varieties({this.isDefault, this.pokemon});
 
   Varieties.fromJson(Map<String, dynamic> json) {
     isDefault = json['is_default'];
     pokemon =
-    json['pokemon'] != null ? new ObjectPokemon.fromJson(json['pokemon']) : null;
+    json['pokemon'] != null ? new ObjPokemon.fromJson(json['pokemon']) : null;
   }
 
   Map<String, dynamic> toJson() {
